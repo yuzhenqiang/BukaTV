@@ -22,9 +22,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 sealed class Screen(
-    val labe: String,
+    val label: String,
     val icon: ImageVector,
-    val content: @Composable (() -> Unit)
+    val content: @Composable () -> Unit
 ) {
     object Main : Screen("主屏幕", Icons.Default.PlayArrow, { MainScreen() })
     object MediaLibrary : Screen("媒体库", Icons.Default.Search, { MediaLibraryScreen() })
@@ -52,8 +52,8 @@ fun App() {
                         NavigationBarItem(
                             selected = screenTab == index,
                             onClick = { screenTab = index },
-                            icon = { Icon(screen.icon, contentDescription = screen.labe) },
-                            label = { Text(screen.labe) }
+                            icon = { Icon(screen.icon, contentDescription = screen.label) },
+                            label = { Text(screen.label) }
                         )
                     }
                 }
