@@ -20,6 +20,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.yzq.bukatv.ui.screens.MainScreen
+import org.yzq.bukatv.ui.screens.MediaLibraryScreen
+import org.yzq.bukatv.ui.screens.SettingsScreen
 
 sealed class Screen(
     val label: String,

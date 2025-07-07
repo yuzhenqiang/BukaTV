@@ -1,4 +1,4 @@
-package org.yzq.bukatv
+package org.yzq.bukatv.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -23,6 +23,7 @@ import bukatv.composeapp.generated.resources.Res
 import bukatv.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.yzq.bukatv.Greeting
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

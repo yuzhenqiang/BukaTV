@@ -1,9 +1,7 @@
-package org.yzq.bukatv
+package org.yzq.bukatv.ui.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,17 +12,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material.icons.automirrored.rounded.ArrowForwardIos
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.PlayLesson
-import androidx.compose.material.icons.filled.SettingsApplications
-import androidx.compose.material.icons.filled.SettingsCell
 import androidx.compose.material.icons.filled.Source
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.VideoSettings
-import androidx.compose.material.icons.rounded.ArrowCircleRight
-import androidx.compose.material.icons.rounded.ArrowForward
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
