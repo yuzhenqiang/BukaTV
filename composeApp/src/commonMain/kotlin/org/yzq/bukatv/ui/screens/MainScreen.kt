@@ -70,7 +70,7 @@ fun MainScreen() {
                 modifier = Modifier.padding(innerPadding).fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                TitleRows(title = "最近添加") {
+                TitleRows(title = "最近添加", showEntry = true) {
                     items(mediaList) { item -> MediaItemWidget(item) }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
