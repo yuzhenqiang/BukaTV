@@ -30,7 +30,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-data class SettingItem(val name: String, val icon: ImageVector, val onClick: () -> Unit);
+data class SettingItem(val name: String, val icon: ImageVector, val onClick: () -> Unit)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,7 +42,7 @@ fun SettingsScreen() {
         SettingItem(name = "文件来源", icon = Icons.Default.Source, onClick = {}),
         SettingItem(name = "播放设置", icon = Icons.Default.VideoSettings, onClick = {}),
         SettingItem(name = "关于", icon = Icons.Rounded.Info, onClick = {}),
-    );
+    )
     Box(
         modifier = Modifier.fillMaxSize()
     ) {

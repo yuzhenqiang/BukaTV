@@ -19,7 +19,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import io.kamel.image.KamelImage
 import io.kamel.image.KamelImageBox
 import io.kamel.image.asyncPainterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
