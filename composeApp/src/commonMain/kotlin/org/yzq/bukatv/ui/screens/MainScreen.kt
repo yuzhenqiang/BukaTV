@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -58,7 +60,7 @@ val mediaList = listOf<MediaItemData>(
 @Preview
 fun MainScreen() {
     // 定义可变状态
-
+    var scrollState = rememberScrollState()
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -67,7 +69,7 @@ fun MainScreen() {
                 title = { Text("主屏幕") })
         }, content = { innerPadding ->
             Column(
-                modifier = Modifier.padding(innerPadding).fillMaxSize(),
+                modifier = Modifier.padding(innerPadding).fillMaxSize().verticalScroll(scrollState),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 TitleRows(title = "最近添加", showEntry = true) {
@@ -77,7 +79,6 @@ fun MainScreen() {
                 TitleRows(title = "未观看的") {
                     items(mediaList) { item -> MediaItemWidget(item) }
                 }
-
             }
         })
     }
