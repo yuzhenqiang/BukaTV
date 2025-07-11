@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -54,6 +55,8 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(libs.ktor.client.core)
             implementation(libs.kamel.image.default)
+            implementation(libs.xmlutil.core)
+            implementation(libs.xmlutil.serialization)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
