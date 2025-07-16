@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import bukatv.composeapp.generated.resources.Res
 import bukatv.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
@@ -28,7 +29,7 @@ import org.yzq.bukatv.Greeting
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun MediaLibraryScreen() {
+fun MediaLibraryScreen(navController: NavController) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {

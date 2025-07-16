@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 data class SettingItem(val name: String, val icon: ImageVector, val onClick: () -> Unit)
@@ -35,11 +36,13 @@ data class SettingItem(val name: String, val icon: ImageVector, val onClick: () 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun SettingsScreen() {
+fun SettingsScreen(navController: NavController) {
 
     val settings = listOf<SettingItem>(
         SettingItem(name = "通用", icon = Icons.Default.Tune, onClick = {}),
-        SettingItem(name = "文件来源", icon = Icons.Default.Source, onClick = {}),
+        SettingItem(name = "媒体来源", icon = Icons.Default.Source, onClick = {
+            navController.navigate(MediaSourceRoute)
+        }),
         SettingItem(name = "播放设置", icon = Icons.Default.VideoSettings, onClick = {}),
         SettingItem(name = "关于", icon = Icons.Rounded.Info, onClick = {}),
     )

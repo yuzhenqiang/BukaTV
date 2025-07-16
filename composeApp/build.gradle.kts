@@ -57,6 +57,7 @@ kotlin {
             implementation(libs.kamel.image.default)
             implementation(libs.xmlutil.core)
             implementation(libs.xmlutil.serialization)
+            implementation(libs.androidx.navitation.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

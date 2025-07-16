@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.yzq.bukatv.model.MediaItemData
 import org.yzq.bukatv.ui.widgets.MediaItemWidget
@@ -58,7 +59,7 @@ val mediaList = listOf<MediaItemData>(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun MainScreen() {
+fun MainScreen(navController: NavController) {
     // 定义可变状态
     var scrollState = rememberScrollState()
     Box(
