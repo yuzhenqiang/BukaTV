@@ -1,6 +1,7 @@
 package org.yzq.bukatv.ui.screens
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -14,36 +15,38 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.Serializable
 
 @Serializable
 object HomeRoute
 
 sealed class SubScreen(
+    val route: String,
     val label: String,
     val icon: ImageVector,
     val content: @Composable (navController: NavController) -> Unit
 ) {
-    object Main : SubScreen("主屏幕", Icons.Default.PlayArrow, { navController -> MainScreen(navController) })
-    object MediaLibrary : SubScreen("媒体库", Icons.Default.Search, { navController ->  MediaLibraryScreen(navController) })
-    object Settings : SubScreen("设置", Icons.Default.Settings, { navController -> SettingsScreen(navController) })
+    object Main : SubScreen("main", "主屏幕", Icons.Default.PlayArrow, { navController -> MainScreen(navController) })
+    object MediaLibrary : SubScreen("media_library", "媒体库", Icons.Default.Search, { navController ->  MediaLibraryScreen(navController) })
+    object Settings : SubScreen("settings", "设置", Icons.Default.Settings, { navController -> SettingsScreen(navController) })
 }
 
 @Composable
 fun HomeScreen(navController: NavController) {
+    val tabNavController = rememberNavController()
+
     val subScreens = listOf(
         SubScreen.Main,
         SubScreen.MediaLibrary,
         SubScreen.Settings
     )
-    // 定义可变状态
-    var screenTab by remember { mutableStateOf(0) }
 
     MaterialTheme {
         Scaffold(
@@ -51,19 +54,40 @@ fun HomeScreen(navController: NavController) {
                 .fillMaxSize(),
             bottomBar = {
                 NavigationBar {
+                    val navBackStackEntry by tabNavController.currentBackStackEntryAsState()
+                    val currentRoute = navBackStackEntry?.destination?.route
                     subScreens.forEachIndexed { index, screen ->
                         NavigationBarItem(
-                            selected = screenTab == index,
-                            onClick = { screenTab = index },
+                            selected = currentRoute == screen.route,
                             icon = { Icon(screen.icon, contentDescription = screen.label) },
-                            label = { Text(screen.label) }
+                            label = { Text(screen.label) },
+                            onClick = {
+                                if (currentRoute != screen.route) {
+                                    tabNavController.navigate(screen.route) {
+                                        popUpTo(tabNavController.graph.id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                }
+                            }
                         )
                     }
                 }
             }
         ) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                subScreens[screenTab].content(navController)
+            NavHost(
+                tabNavController,
+                startDestination = SubScreen.Main.route,
+                enterTransition = { EnterTransition.None },
+                exitTransition = { ExitTransition.None },
+                popEnterTransition = { EnterTransition.None },
+                popExitTransition = { ExitTransition.None }
+            ) {
+                subScreens.forEach { screen ->
+                    composable(screen.route) { screen.content(navController) }
+                }
             }
         }
     }
