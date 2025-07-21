@@ -59,7 +59,7 @@ val mediaList = listOf<MediaItemData>(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun MainScreen(navController: NavController) {
+fun MainScreen() {
     // 定义可变状态
     var scrollState = rememberScrollState()
     Box(

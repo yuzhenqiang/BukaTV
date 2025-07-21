@@ -29,7 +29,7 @@ import org.yzq.bukatv.Greeting
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun MediaLibraryScreen(navController: NavController) {
+fun MediaLibraryScreen() {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {

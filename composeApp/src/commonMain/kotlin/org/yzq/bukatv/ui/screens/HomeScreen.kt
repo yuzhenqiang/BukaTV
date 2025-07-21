@@ -31,15 +31,15 @@ sealed class SubScreen(
     val route: String,
     val label: String,
     val icon: ImageVector,
-    val content: @Composable (navController: NavController) -> Unit
+    val content: @Composable () -> Unit
 ) {
-    object Main : SubScreen("main", "主屏幕", Icons.Default.PlayArrow, { navController -> MainScreen(navController) })
-    object MediaLibrary : SubScreen("media_library", "媒体库", Icons.Default.Search, { navController ->  MediaLibraryScreen(navController) })
-    object Settings : SubScreen("settings", "设置", Icons.Default.Settings, { navController -> SettingsScreen(navController) })
+    object Main : SubScreen("main", "主屏幕", Icons.Default.PlayArrow, { MainScreen() })
+    object MediaLibrary : SubScreen("media_library", "媒体库", Icons.Default.Search, { MediaLibraryScreen() })
+    object Settings : SubScreen("settings", "设置", Icons.Default.Settings, { SettingsScreen() })
 }
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen() {
     val tabNavController = rememberNavController()
 
     val subScreens = listOf(
@@ -86,7 +86,7 @@ fun HomeScreen(navController: NavController) {
                 popExitTransition = { ExitTransition.None }
             ) {
                 subScreens.forEach { screen ->
-                    composable(screen.route) { screen.content(navController) }
+                    composable(screen.route) { screen.content() }
                 }
             }
         }
