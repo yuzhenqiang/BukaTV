@@ -17,6 +17,7 @@ kotlin {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
+            freeCompilerArgs.add("-Xexpect-actual-classes")
         }
     }
     
@@ -32,18 +33,6 @@ kotlin {
     }
     
     jvm("desktop")
-
-    // 👇 添加这个来关闭 expect/actual class 的警告
-    targets.all {
-        compilations.all {
-            compileTaskProvider.configure {
-                compilerOptions {
-                    freeCompilerArgs.add("-Xexpect-actual-classes")
-                }
-            }
-        }
-    }
-
 
     sourceSets {
         val desktopMain by getting
@@ -73,6 +62,7 @@ kotlin {
             implementation(libs.xmlutil.core)
             implementation(libs.xmlutil.serialization)
             implementation(libs.androidx.navitation.compose)
+            implementation(libs.sqldelight.runtime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
