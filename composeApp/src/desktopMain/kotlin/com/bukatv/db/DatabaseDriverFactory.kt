@@ -7,7 +7,7 @@ import java.util.Properties
 
 actual class DatabaseDriverFactory {
     actual fun createDriver(): SqlDriver {
-        val driver: SqlDriver = JdbcSqliteDriver("jdbc:sqlite:test.db", Properties(), Database.Schema)
+        val driver: SqlDriver = JdbcSqliteDriver("jdbc:sqlite:app.db", Properties(), Database.Schema)
         return driver
     }
 }

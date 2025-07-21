@@ -6,6 +6,6 @@ import app.cash.sqldelight.driver.native.NativeSqliteDriver
 
 actual class DatabaseDriverFactory {
     actual fun createDriver(): SqlDriver {
-        return NativeSqliteDriver(Database.Schema, "test.db")
+        return NativeSqliteDriver(Database.Schema, "app.db")
     }
 }
